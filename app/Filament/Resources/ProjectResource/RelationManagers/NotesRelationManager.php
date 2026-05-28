@@ -26,6 +26,11 @@ final class NotesRelationManager extends RelationManager
 
     protected static string|\BackedEnum|null $icon = 'heroicon-o-document-text';
 
+    public static function getModelLabel(): string
+    {
+        return __('filament/resources/project.relation_managers.notes.model_label');
+    }
+
     public function form(Schema $schema): Schema
     {
         return NoteForm::get($schema, ['projects']);

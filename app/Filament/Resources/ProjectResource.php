@@ -92,8 +92,11 @@ final class ProjectResource extends Resource
                         ->label(__('filament/resources/project.fields.budget.label'))
                         ->numeric()
                         ->minValue(0)
-                        ->suffix(__('cents'))
+                        ->step(0.01)
+                        ->suffix('€')
                         ->nullable()
+                        ->formatStateUsing(fn (?int $state): ?string => $state !== null ? number_format($state / 100, 2, '.', '') : null)
+                        ->dehydrateStateUsing(fn (?string $state): ?int => $state !== null && $state !== '' ? (int) round((float) $state * 100) : null)
                         ->columnSpan(1),
                     ColorPicker::make('color')
                         ->label(__('filament/resources/project.fields.color.label'))

@@ -51,6 +51,7 @@ return [
                     'start_date' => ['label' => 'Fecha de inicio'],
                     'end_date' => ['label' => 'Fecha de fin'],
                     'due_date' => ['label' => 'Fecha límite'],
+                    'description' => ['label' => 'Descripción'],
                     'creator' => ['label' => 'Creado por'],
                     'created_at' => ['label' => 'Fecha de creación'],
                     'updated_at' => ['label' => 'Última actualización'],
@@ -64,6 +65,7 @@ return [
             'model_label' => 'persona',
         ],
         'notes' => [
+            'model_label' => 'nota',
             'fields' => [
                 'people' => ['label' => 'Personas'],
             ],

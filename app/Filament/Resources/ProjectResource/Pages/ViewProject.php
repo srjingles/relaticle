@@ -73,7 +73,7 @@ final class ViewProject extends ViewRecord
     {
         return $schema->schema([
             Section::make()->schema([
-                Flex::make([
+                Grid::make(3)->schema([
                     TextEntry::make('name')
                         ->label(__('filament/resources/project.pages.view.infolist.fields.name.label'))
                         ->size('xl')
@@ -86,10 +86,10 @@ final class ViewProject extends ViewRecord
                         ->label(__('filament/resources/project.pages.view.infolist.fields.company.label'))
                         ->color('primary')
                         ->url(fn (Project $record): ?string => $record->company
-                            ? CompanyResource::getUrl('view', [$record->company])
-                            : null)
+                        ? CompanyResource::getUrl('view', [$record->company])
+                        : null)
                         ->grow(false),
-                ])->columnSpanFull(),
+                ]),
                 Grid::make(3)->schema([
                     TextEntry::make('due_date')
                         ->label(__('filament/resources/project.pages.view.infolist.fields.due_date.label'))
@@ -109,11 +109,11 @@ final class ViewProject extends ViewRecord
                         ->formatStateUsing(fn (?int $state): string => $state !== null
                             ? number_format($state / 100, 2).' €'
                             : '—'),
-                    ColorEntry::make('color')
-                        ->label(__('filament/resources/project.pages.view.infolist.fields.color.label')),
                     TextEntry::make('accountOwner.name')
                         ->label(__('filament/resources/project.pages.view.infolist.fields.account_owner.label'))
                         ->icon('heroicon-o-user'),
+                    ColorEntry::make('color')
+                        ->label(__('filament/resources/project.pages.view.infolist.fields.color.label')),
                 ]),
                 TextEntry::make('description')
                     ->label(__('filament/resources/project.pages.view.infolist.fields.description.label'))

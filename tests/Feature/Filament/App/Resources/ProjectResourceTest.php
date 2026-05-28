@@ -168,6 +168,7 @@ it('sets creator_id and team_id when creating a project', function (): void {
     livewire(ListProjects::class)
         ->callAction('create', data: [
             'name' => 'Observer Test Project',
+            'status' => ProjectStatus::Planning->value,
         ])
         ->assertHasNoActionErrors();
 
@@ -181,6 +182,7 @@ it('generates slug from name on create', function (): void {
     livewire(ListProjects::class)
         ->callAction('create', data: [
             'name' => 'My New Project',
+            'status' => ProjectStatus::Planning->value,
         ])
         ->assertHasNoActionErrors();
 

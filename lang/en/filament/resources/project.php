@@ -55,6 +55,7 @@ return [
                     'start_date' => ['label' => 'Start Date'],
                     'end_date' => ['label' => 'End Date'],
                     'due_date' => ['label' => 'Due Date'],
+                    'description' => ['label' => 'Description'],
                     'creator' => ['label' => 'Created By'],
                     'created_at' => ['label' => 'Created Date'],
                     'updated_at' => ['label' => 'Last Updated'],
@@ -68,6 +69,7 @@ return [
             'model_label' => 'person',
         ],
         'notes' => [
+            'model_label' => 'note',
             'fields' => [
                 'people' => ['label' => 'People'],
             ],

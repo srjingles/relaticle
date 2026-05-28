@@ -10,11 +10,13 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DetachAction;
 use Filament\Actions\DetachBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Support\Enums\Size;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Relaticle\CustomFields\Facades\CustomFields;
 
 final class PeopleRelationManager extends RelationManager
 {
@@ -31,7 +33,15 @@ final class PeopleRelationManager extends RelationManager
 
     public function form(Schema $schema): Schema
     {
-        return $schema->components([]);
+        return $schema->components([
+            TextInput::make('name')
+                ->required()
+                ->maxLength(255)
+                ->columnSpanFull(),
+            CustomFields::form()->build()
+                ->columnSpanFull()
+                ->columns(),
+        ]);
     }
 
     public function table(Table $table): Table

@@ -20,6 +20,7 @@ use App\Models\Note;
 use App\Models\Opportunity;
 use App\Models\People;
 use App\Models\PersonalAccessToken;
+use App\Models\Project;
 use App\Models\Task;
 use App\Models\Team;
 use App\Models\User;
@@ -221,6 +222,7 @@ final class AppServiceProvider extends ServiceProvider
             'opportunity' => Opportunity::class,
             'task' => Task::class,
             'note' => Note::class,
+            'project' => Project::class,
             'system_administrator' => SystemAdministrator::class,
         ]);
 
