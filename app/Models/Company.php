@@ -113,6 +113,14 @@ final class Company extends Model implements HasCustomFields, HasMedia
     }
 
     /**
+     * @return HasMany<Project, $this>
+     */
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class);
+    }
+
+    /**
      * @return MorphToMany<Task, $this>
      */
     public function tasks(): MorphToMany

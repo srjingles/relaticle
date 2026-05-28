@@ -94,6 +94,14 @@ final class Note extends Model implements HasCustomFields
         return $this->morphedByMany(Opportunity::class, 'noteable');
     }
 
+    /**
+     * @return MorphToMany<Project, $this>
+     */
+    public function projects(): MorphToMany
+    {
+        return $this->morphedByMany(Project::class, 'noteable');
+    }
+
     /** @param Builder<self> $query */
     #[Scope]
     protected function forNotableType(Builder $query, string $type): void
@@ -102,6 +110,7 @@ final class Note extends Model implements HasCustomFields
             'company' => 'companies',
             'people' => 'people',
             'opportunity' => 'opportunities',
+            'project' => 'projects',
         ];
 
         $relation = $relationMap[$type] ?? null;
@@ -118,7 +127,8 @@ final class Note extends Model implements HasCustomFields
         $query->where(function (Builder $q) use ($id): void {
             $q->whereHas('companies', fn (Builder $sub) => $sub->where('noteables.noteable_id', $id))
                 ->orWhereHas('people', fn (Builder $sub) => $sub->where('noteables.noteable_id', $id))
-                ->orWhereHas('opportunities', fn (Builder $sub) => $sub->where('noteables.noteable_id', $id));
+                ->orWhereHas('opportunities', fn (Builder $sub) => $sub->where('noteables.noteable_id', $id))
+                ->orWhereHas('projects', fn (Builder $sub) => $sub->where('noteables.noteable_id', $id));
         });
     }
 }

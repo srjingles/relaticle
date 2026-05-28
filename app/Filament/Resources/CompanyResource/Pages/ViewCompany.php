@@ -9,6 +9,7 @@ use App\Filament\Components\Infolists\AvatarName;
 use App\Filament\Resources\CompanyResource;
 use App\Filament\Resources\CompanyResource\RelationManagers\NotesRelationManager;
 use App\Filament\Resources\CompanyResource\RelationManagers\PeopleRelationManager;
+use App\Filament\Resources\CompanyResource\RelationManagers\ProjectsRelationManager;
 use App\Filament\Resources\CompanyResource\RelationManagers\TasksRelationManager;
 use App\Models\Company;
 use Filament\Actions\Action;
@@ -117,6 +118,7 @@ final class ViewCompany extends ViewRecord
     {
         return [
             PeopleRelationManager::class,
+            ProjectsRelationManager::class,
             TasksRelationManager::class,
             NotesRelationManager::class,
         ];
